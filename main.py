@@ -1,13 +1,9 @@
 import os
-# TODO:bilgilendirme mesajlarının düzeltilmesi.
-# TODO:DONE check edilmiş görevi düzelt.
 print("**************to do list*****************")
 cikis = ""
 while cikis != "exit":
-    # TODO:DONE KÜÇÜK BÜYÜK HARF İKİSİDE GİRİLMELİ İKİSİDE ÇALIŞMALI.
     islem = input("İşleminizi giriniz(add/delete/check/replace/list/exit):")
     #*****************add********************
-    # TODO:DONE add komutundan sonra görev eklenmeden geçememeli.
     if islem.lower() == "add":
         adet = 0
         if os.path.isfile("belge.txt"):
@@ -18,19 +14,17 @@ while cikis != "exit":
         file = open("belge.txt","a")
         inp = input("görev giriniz:")
         if len(inp) > 0:
-            file.write("x "+f"{adet + 1}. " + inp + "\n") or file.write("v "+f"{adet + 1}. " + inp + "\n")
+            file.write("x " + inp + "\n")
             file.close()
         else:
             print("yanlis islem...")
     #*****************delete****************
-    # TODO:DONE boş görev numarası verilir ise hepsini siliyor. rakam zorunlu olmalı.
-    # TODO:DONE eğer metin içerisinde de o rakam geciyor ise onu tiklemesi engellenmeli.
     elif islem.lower() == "delete":
         file = open("belge.txt","r")
         lines = file.readlines()
         file.close()
         c = True
-        silinecek = input("silmek istediğiniz görev:")
+        silinecek = input("silmek istediğiniz görevi giriniz:")
         if len(silinecek) == 0:
             c = False
         for karakter in silinecek:
@@ -47,8 +41,6 @@ while cikis != "exit":
         else:
             print("yanlış işlem...")
     #*****************check***************
-    # TODO:DONE boşluk girildiğinde hepsine tik koyuyor. ve sadece görev numarası girilmeli.
-    # TODO:DONE eğer metin içerisinde de o rakam geciyor ise onu tiklemesi engellenmeli.
     elif islem.lower() == "check":
         file = open("belge.txt","r")
         lines = file.readlines()
@@ -101,10 +93,13 @@ while cikis != "exit":
             print("yanlış işlem...")
             a = False
     #*************list***************
+    # TODO: belge olmadığın da hataya düşüyor. paython dosya varmı yokmu?
     elif islem.lower() == "list":
         file = open("belge.txt","r")
+        tut = 0
         for i in file:
-            print(i)
+            tut+=1
+            print(f"{tut}. {i}")
         file.close()
     #************çıkış************
     elif islem.lower() == "exit":
