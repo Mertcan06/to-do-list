@@ -20,78 +20,90 @@ while cikis != "exit":
             print("yanlis islem...")
     #*****************delete****************
     elif islem.lower() == "delete":
-        file = open("belge.txt","r")
-        lines = file.readlines()
-        file.close()
-        c = True
-        silinecek = input("silmek istediğiniz görevi giriniz:")
-        if len(silinecek) == 0:
-            c = False
-        for karakter in silinecek:
-            if not karakter in "0123456789":
-                c = False
-        if c:
-            file = open("belge.txt","w")
-            tut1 = 1
-            for line in lines:
-                if not tut1 == int(silinecek):
-                    file.write(line)
-                tut1 += 1
+        import os
+        if os.path.isfile("belge.txt") == True:
+            file = open("belge.txt","r")
+            lines = file.readlines()
             file.close()
+            c = True
+            silinecek = input("silmek istediğiniz görevi giriniz:")
+            if len(silinecek) == 0:
+                c = False
+            for karakter in silinecek:
+                if not karakter in "0123456789":
+                    c = False
+            if c:
+                file = open("belge.txt","w")
+                tut1 = 1
+                for line in lines:
+                    if not tut1 == int(silinecek):
+                        file.write(line)
+                    tut1 += 1
+                file.close()
+            else:
+                print("yanlış işlem...")
         else:
-            print("yanlış işlem...")
+            print("dosya yok...")
     #*****************check***************
     elif islem.lower() == "check":
-        file = open("belge.txt","r")
-        lines = file.readlines()
-        file.close()
-        a = True
-        tik = input(" bitirdiğiniz görevi giriniz:")
-        if tik == "":
-            a = False
-        for karakter1 in tik:
-            if not karakter1 in "0123456789":
-                a = False
-        if a:
-            file = open("belge.txt","w+")
-            tut = 1
-            for line in lines:
-                if tut == int(tik):
-                    file.write(line.replace("x","v"))
-                else:
-                    file.write(line)
-                tut += 1
+        import os
+        if os.path.isfile("belge.txt") == True:
+            file = open("belge.txt","r")
+            lines = file.readlines()
             file.close()
-            a = False
+            a = True
+            tik = input(" bitirdiğiniz görevi giriniz:")
+            if tik == "":
+                a = False
+            for karakter1 in tik:
+                if not karakter1 in "0123456789":
+                    a = False
+            if a:
+                file = open("belge.txt","w+")
+                tut = 1
+                for line in lines:
+                    if tut == int(tik):
+                        file.write(line.replace("x","v"))
+                    else:
+                        file.write(line)
+                    tut += 1
+                file.close()
+                a = False
+            else:
+                print("yanlış işlem...")
+                a = False
         else:
-            print("yanlış işlem...")
-            a = False
+            print("dosya yok...")
     #*************replace***************
     elif islem.lower() == "replace":
-        file = open("belge.txt","r")
-        lines = file.readlines()
-        file.close()
-        a = True
-        tik1 = input("düzeltilecek görevi giriniz:")
-        if tik1 == "":
-            a = False
-        for karakter2 in tik1:
-            if not karakter2 in "0123456789":
-                a = False
-        if a:
-            file = open("belge.txt","w+")
-            tut = 1
-            for line in lines:
-                if tut == int(tik1):
-                    file.write(line.replace("v","x"))
-                else:
-                    file.write(line)
-                tut += 1
+        import os
+        if os.path.isfile("belge.txt") == True:
+            file = open("belge.txt","r")
+            lines = file.readlines()
             file.close()
-            a = False
+            a = True
+            tik1 = input("düzeltilecek görevi giriniz:")
+            if tik1 == "":
+                a = False
+            for karakter2 in tik1:
+                if not karakter2 in "0123456789":
+                    a = False
+            if a:
+                file = open("belge.txt","w+")
+                tut = 1
+                for line in lines:
+                    if tut == int(tik1):
+                        file.write(line.replace("v","x"))
+                    else:
+                        file.write(line)
+                    tut += 1
+                file.close()
+                a = False
+            else:
+                print("yanlış işlem...")
+                a = False
         else:
-            print("yanlış işlem...")
-            a = False
+            print("dosya yok...")
     #*************list***************
     elif islem.lower() == "list":
         import os
