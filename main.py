@@ -93,14 +93,17 @@ while cikis != "exit":
             print("yanlış işlem...")
             a = False
     #*************list***************
-    # TODO: belge olmadığın da hataya düşüyor. paython dosya varmı yokmu?
     elif islem.lower() == "list":
-        file = open("belge.txt","r")
-        tut = 0
-        for i in file:
-            tut+=1
-            print(f"{tut}. {i}")
-        file.close()
+        import os
+        if os.path.isfile("belge.txt") == True:
+            file = open("belge.txt","r")
+            tut = 0
+            for i in file:
+                tut+=1
+                print(f"{tut}. {i}")
+            file.close()
+        else:
+            print("dosya yok...")
     #************çıkış************
     elif islem.lower() == "exit":
         cikis = "exit"
